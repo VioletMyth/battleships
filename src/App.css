@@ -7,6 +7,16 @@
   pointer-events: none;
 }
 
+.body {
+  margin: 0;
+}
+*,
+*::before,
+*::after {
+  /* inherit the box-sizing from the html tag */
+  box-sizing: inherit;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;

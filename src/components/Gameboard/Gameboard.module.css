@@ -1,0 +1,60 @@
+.gameBoard {
+  display: flex;
+  /* aspect-ratio: 1; */
+  justify-content: center;
+}
+
+.left {
+  width: 50%;
+  height: 100%;
+  background: blue;
+  padding: 20px;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+
+.grid {
+  /* width: 50%; */
+  width: 700px;
+  /* width: auto;
+  height: auto; */
+  /* aspect-ratio: 1; */
+
+  background: black;
+  /* width: 100px; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  height: 700px;
+  padding: 5px;
+}
+
+.gridSquare {
+  background: white;
+  width: calc(100% / 10);
+  /* height: calc(100% / 10); */
+}
+
+.gridRow {
+  display: flex;
+  gap: 5px;
+  height: 100%;
+}
+
+.playerContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.playerOne {
+  background: green;
+}
+.playerTwo {
+  background: yellow;
+}
+
+.shipContainer {
+  display: flex;
+}

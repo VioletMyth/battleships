@@ -1,0 +1,39 @@
+.header {
+  height: 5rem;
+  /* width: 100vw; */
+  background: purple;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+  /* padding: 0px 20px; */
+}
+
+.logo {
+  height: 4rem;
+  width: 6rem;
+  background: grey;
+}
+
+.searchBar {
+  height: 4rem;
+  width: 70%;
+  background: white;
+}
+
+.searchBarButton {
+  height: 4rem;
+  width: 8rem;
+  background: blueviolet;
+}
+
+.threeBoxContainer {
+  display: flex;
+  gap: 20px;
+}
+
+.threeBox {
+  height: 4rem;
+  width: 4rem;
+  background: grey;
+}
