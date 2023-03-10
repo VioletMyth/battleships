@@ -35,21 +35,41 @@ export default function Gameboard() {
 
   const [grid, setGrid] = useState(initialiseGrid(10));
   const [ships, setShips] = useState(getShipInitialState(data));
+  const [playerOneScore, setPlayerOneScore] = useState(0);
+
   console.log(grid);
   console.log(ships);
 
   const shipRenderer = (shipType) => {
     switch (shipType) {
       case "destroyer":
-        return <img src={aircraftShape} alt="aircraft" />;
+        return (
+          <img src={aircraftShape} alt="aircraft" style={{ height: "50px" }} />
+        );
       case "cruiser":
-        return <img src={battleshipShape} alt="cruiser" />;
+        return (
+          <img src={battleshipShape} alt="cruiser" style={{ height: "50px" }} />
+        );
       case "carrier":
-        return <img src={carrierShape} alt="carrier" />;
+        return (
+          <img src={carrierShape} alt="carrier" style={{ height: "50px" }} />
+        );
       case "submarine":
-        return <img src={submarineShape} alt="submarine" />;
+        return (
+          <img
+            src={submarineShape}
+            alt="submarine"
+            style={{ height: "50px" }}
+          />
+        );
       case "battleship":
-        return <img src={battleshipShape} alt="battleship" />;
+        return (
+          <img
+            src={battleshipShape}
+            alt="battleship"
+            style={{ height: "50px" }}
+          />
+        );
       default:
         break;
     }
@@ -58,68 +78,47 @@ export default function Gameboard() {
   const gridSquareRenderer = (gridSquareStatus) => {
     console.log(gridSquareStatus);
     switch (gridSquareStatus) {
-      case gridSquareStatus.Hit:
-        console.log("we got in here");
-        return <img src={hitBig} alt="hitBig" />;
-      case gridSquareStatus.Miss:
-        return <img src={miss} alt="miss" />;
+      case GridSquareStatus.Hit:
+        return <img src={hitBig} alt="hitBig" style={{ width: "80%" }} />;
+      case GridSquareStatus.Miss:
+        return <img src={miss} alt="miss" style={{ width: "80%" }} />;
       default:
-        return <></>;
+        return;
     }
   };
 
-  const handleClick = (row, col) => {
-    // ships.forEach((ship, i) => {
-    //   ship.positions.forEach((position, j) => {
-    //     position.forEach((p, pIndex) => {
-    //       if (p[0] === row && p[1] === col) {
-    //         setShips((prevShips) => {
-    //           return prevShips.map((ship, k) => {
-    //             if (i === k) {
-    //               return {
-    //                 type: ship.type,
-    //                 positions: ship.positions,
-    //                 hit: ship.hit.map((hitPos, q) =>
-    //                   q === pIndex ? true : hitPos
-    //                 ),
-    //               };
-    //             }
-    //             return ship;
-    //           });
-    //         });
-    //         //TODO: this needs to be properly set
-    //         grid[row][col] = GridSquareStatus.Hit;
-    //         setGrid(grid);
-    //       } else {
-    //         grid[row][col] = GridSquareStatus.Miss;
-    //         setGrid(grid);
-    //       }
-    //       return;
-    //     });
-    //   });
-    // });
+  useEffect(() => {
+    const score = ships.filter(({ hit }) =>
+      hit.every((isHit) => isHit === true)
+    ).length;
+    setPlayerOneScore(score);
+  }, [ships]);
 
+  const handleClick = (row, col) => {
     for (let [i, ship] of ships.entries()) {
       for (let [j, position] of ship.positions.entries()) {
         for (let [pIndex, p] of position.entries()) {
           if (p[0] === row && p[1] === col) {
-            setShips((prevShips) => {
-              return prevShips.map((ship, k) => {
-                if (i === k) {
-                  return {
-                    type: ship.type,
-                    positions: ship.positions,
-                    hit: ship.hit.map((hitPos, q) =>
-                      q === pIndex ? true : hitPos
-                    ),
-                  };
-                }
-                return ship;
-              });
-            });
-            //TODO: this needs to be properly set
+            setShips(
+              (prevShips) => {
+                return prevShips.map((ship, k) => {
+                  if (i === k) {
+                    return {
+                      type: ship.type,
+                      positions: ship.positions,
+                      hit: ship.hit.map((hitPos, q) =>
+                        q === pIndex ? true : hitPos
+                      ),
+                    };
+                  }
+                  return ship;
+                });
+              },
+              (prevState) => console.log(prevState, "asdasd")
+            );
             grid[row][col] = GridSquareStatus.Hit;
             setGrid(grid);
+
             return;
           }
         }
@@ -140,20 +139,32 @@ export default function Gameboard() {
       <div className={styles.left}>
         <div className={styles.playerContainer}>
           <div className={styles.playerOne}>
-            Player 1<div>0</div>
+            Player 1<div>{playerOneScore}</div>
           </div>
           <div className={styles.playerTwo}>
             Player 2<div>0</div>
           </div>
         </div>
         <div className={styles.imageContainer}>
-          {Object.keys(data.shipTypes).map((shipType) => {
+          {ships.map(({ type, positions, hit }) => {
             return (
               <div className={styles.shipContainer}>
-                {shipRenderer(shipType)}
-                {[...Array(data?.shipTypes[shipType]?.size)].map(() => {
-                  return <img src={missSmall} alt="miss" />;
-                })}
+                {shipRenderer(type)}
+                {hit.map((isHit) =>
+                  isHit ? (
+                    <img
+                      src={hitSmall}
+                      alt="miss"
+                      style={{ height: "25px", width: "25px" }}
+                    />
+                  ) : (
+                    <img
+                      src={missSmall}
+                      alt="miss"
+                      style={{ height: "25px", width: "25px" }}
+                    />
+                  )
+                )}
               </div>
             );
           })}
@@ -167,8 +178,7 @@ export default function Gameboard() {
                 className={styles.gridSquare}
                 onClick={() => handleClick(i, j)}
               >
-                {grid[i][j] === GridSquareStatus.Hit && <div>hit</div>}
-                {grid[i][j] === GridSquareStatus.Miss && <div>miss</div>}
+                {gridSquareRenderer(grid[i][j])}
               </div>
             ))}
           </div>
