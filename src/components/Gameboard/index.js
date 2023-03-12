@@ -150,7 +150,7 @@ export default function Gameboard() {
               <div className={styles.playerTag}>player 1</div>
             </div>
             <div className={styles.playerTwo}>
-              <div className={styles.score}>0</div>
+              <div className={styles.score}>00</div>
               <div className={styles.playerTag}>player 2</div>
             </div>
           </div>
