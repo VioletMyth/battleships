@@ -14,7 +14,10 @@
 *::before,
 *::after {
   /* inherit the box-sizing from the html tag */
-  box-sizing: inherit;
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+  -moz-box-sizing: border-box; /* Firefox, other Gecko */
+  box-sizing: border-box; /* Opera/IE 8+ */
 }
 
 @media (prefers-reduced-motion: no-preference) {

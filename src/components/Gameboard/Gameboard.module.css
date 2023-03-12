@@ -1,60 +1,143 @@
 .gameBoard {
   display: flex;
-  /* aspect-ratio: 1; */
   justify-content: center;
+  align-items: flex-start;
 }
 
 .left {
-  width: 50%;
-  height: 100%;
-  background: blue;
-  padding: 20px;
   display: flex;
-  justify-content: center;
   flex-direction: column;
   align-items: center;
+  width: 30%;
 }
 
 .grid {
-  /* width: 50%; */
-  width: 700px;
-  /* width: auto;
-  height: auto; */
-  /* aspect-ratio: 1; */
+  width: 50%;
+  max-width: 700px;
 
-  background: black;
-  /* width: 100px; */
+  background: rgb(243, 179, 62);
   display: flex;
   flex-direction: column;
-  gap: 5px;
-  height: 700px;
   padding: 5px;
 }
 
 .gridSquare {
   background: white;
-  width: calc(100% / 10);
-  /* height: calc(100% / 10); */
+  width: 10%;
+  border: 1px solid rgb(152, 152, 152);
+  aspect-ratio: 1/1;
+  font-size: 0;
 }
 
 .gridRow {
   display: flex;
-  gap: 5px;
-  height: 100%;
 }
 
 .playerContainer {
   display: flex;
-  gap: 20px;
+  width: 100%;
 }
 
 .playerOne {
-  background: green;
+  background: rgb(243, 179, 62);
+  color: rgb(74, 74, 74);
+  width: 40%;
+  aspect-ratio: 1/1;
 }
 .playerTwo {
-  background: yellow;
+  background: rgb(89, 180, 160);
+  color: rgb(74, 74, 74);
+  width: 40%;
+  aspect-ratio: 1/1;
+}
+
+.score {
+  border-bottom: 1px solid rgb(74, 74, 74);
+  padding: 1.5rem;
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin: 0 1.5rem;
+}
+
+.playerTag {
+  font-weight: bold;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin: 10% 0;
 }
 
 .shipContainer {
   display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1%;
+}
+
+.container {
+  margin: 2rem 5%;
+}
+
+.shipImage {
+  width: 40%;
+}
+
+@media only screen and (max-width: 768px) {
+  .container {
+    margin: unset;
+  }
+  .gameBoard {
+    flex-direction: column-reverse;
+    align-items: center;
+  }
+
+  .grid {
+    width: 100%;
+    max-width: unset;
+  }
+
+  .left {
+    width: 100%;
+  }
+
+  .playerContainer {
+    width: 100%;
+  }
+
+  .playerOne {
+    width: 50%;
+    aspect-ratio: unset;
+  }
+
+  .playerTwo {
+    width: 50%;
+    aspect-ratio: unset;
+  }
+
+  .score {
+    padding: unset;
+  }
+
+  .playerTag {
+    margin: unset;
+  }
+
+  .imageContainer {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  .shipContainer {
+    width: 50%;
+  }
+}
+
+.imageContainer {
+  width: 100%;
+}
+
+.hitIndicator {
+  width: 5%;
+}
+
+.hit {
+  width: 100%;
 }

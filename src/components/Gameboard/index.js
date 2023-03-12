@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import styles from "./Gameboard.module.css";
-import aircraftShape from "../../assets/aircraftShape.png";
-import battleshipShape from "../../assets/battleshipShape.png";
 import carrierShape from "../../assets/carrierShape.png";
+import battleshipShape from "../../assets/battleshipShape.png";
+import cruiserShape from "../../assets/cruiserShape.png";
+import destroyerShape from "../../assets/destroyerShape.png";
+
 import submarineShape from "../../assets/submarineShape.png";
 import missSmall from "../../assets/missSmall.png";
 import miss from "../../assets/miss.png";
@@ -44,30 +46,34 @@ export default function Gameboard() {
     switch (shipType) {
       case "destroyer":
         return (
-          <img src={aircraftShape} alt="aircraft" style={{ height: "50px" }} />
+          <img
+            className={styles.shipImage}
+            src={destroyerShape}
+            alt="destroyer"
+          />
         );
       case "cruiser":
         return (
-          <img src={battleshipShape} alt="cruiser" style={{ height: "50px" }} />
+          <img className={styles.shipImage} src={cruiserShape} alt="cruiser" />
         );
       case "carrier":
         return (
-          <img src={carrierShape} alt="carrier" style={{ height: "50px" }} />
+          <img className={styles.shipImage} src={carrierShape} alt="carrier" />
         );
       case "submarine":
         return (
           <img
+            className={styles.shipImage}
             src={submarineShape}
             alt="submarine"
-            style={{ height: "50px" }}
           />
         );
       case "battleship":
         return (
           <img
+            className={styles.shipImage}
             src={battleshipShape}
             alt="battleship"
-            style={{ height: "50px" }}
           />
         );
       default:
@@ -79,9 +85,9 @@ export default function Gameboard() {
     console.log(gridSquareStatus);
     switch (gridSquareStatus) {
       case GridSquareStatus.Hit:
-        return <img src={hitBig} alt="hitBig" style={{ width: "80%" }} />;
+        return <img src={hitBig} alt="hitBig" className={styles.hit} />;
       case GridSquareStatus.Miss:
-        return <img src={miss} alt="miss" style={{ width: "80%" }} />;
+        return <img src={miss} alt="miss" className={styles.hit} />;
       default:
         return;
     }
@@ -135,54 +141,58 @@ export default function Gameboard() {
   };
 
   return (
-    <div className={styles.gameBoard}>
-      <div className={styles.left}>
-        <div className={styles.playerContainer}>
-          <div className={styles.playerOne}>
-            Player 1<div>{playerOneScore}</div>
+    <div className={styles.container}>
+      <div className={styles.gameBoard}>
+        <div className={styles.left}>
+          <div className={styles.playerContainer}>
+            <div className={styles.playerOne}>
+              <div className={styles.score}>{playerOneScore}</div>
+              <div className={styles.playerTag}>player 1</div>
+            </div>
+            <div className={styles.playerTwo}>
+              <div className={styles.score}>0</div>
+              <div className={styles.playerTag}>player 2</div>
+            </div>
           </div>
-          <div className={styles.playerTwo}>
-            Player 2<div>0</div>
+          <div className={styles.imageContainer}>
+            {ships.map(({ type, positions, hit }) => {
+              return (
+                <div className={styles.shipContainer}>
+                  {shipRenderer(type)}
+                  {hit.map((isHit) =>
+                    isHit ? (
+                      <img
+                        className={styles.hitIndicator}
+                        src={hitSmall}
+                        alt="miss"
+                      />
+                    ) : (
+                      <img
+                        className={styles.hitIndicator}
+                        src={missSmall}
+                        alt="miss"
+                      />
+                    )
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
-        <div className={styles.imageContainer}>
-          {ships.map(({ type, positions, hit }) => {
-            return (
-              <div className={styles.shipContainer}>
-                {shipRenderer(type)}
-                {hit.map((isHit) =>
-                  isHit ? (
-                    <img
-                      src={hitSmall}
-                      alt="miss"
-                      style={{ height: "25px", width: "25px" }}
-                    />
-                  ) : (
-                    <img
-                      src={missSmall}
-                      alt="miss"
-                      style={{ height: "25px", width: "25px" }}
-                    />
-                  )
-                )}
-              </div>
-            );
-          })}
+        <div className={styles.grid}>
+          {grid.map((row, i) => (
+            <div className={styles.gridRow}>
+              {row.map((col, j) => (
+                <div
+                  className={styles.gridSquare}
+                  onClick={() => handleClick(i, j)}
+                >
+                  {gridSquareRenderer(grid[i][j])}
+                </div>
+              ))}
+            </div>
+          ))}
         </div>
-      </div>
-      <div className={styles.grid}>
-        {grid.map((row, i) => (
-          <div className={styles.gridRow}>
-            {row.map((col, j) => (
-              <div
-                className={styles.gridSquare}
-                onClick={() => handleClick(i, j)}
-              >
-                {gridSquareRenderer(grid[i][j])}
-              </div>
-            ))}
-          </div>
-        ))}
       </div>
     </div>
   );
