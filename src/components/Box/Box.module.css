@@ -1,0 +1,17 @@
+.threeBox {
+  height: 4rem;
+  width: 4rem;
+  background: rgb(74, 74, 74);
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .secondaryBox {
+    display: none;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .secondaryBox {
+    display: none;
+  }
+}

@@ -1,0 +1,30 @@
+.search {
+  width: 100%;
+  display: flex;
+}
+.searchBar {
+  height: 4rem;
+  width: 80%;
+  margin: 0 10px;
+  background: white;
+}
+.searchBarButton {
+  height: 4rem;
+  width: 15%;
+  background: rgb(118, 118, 178);
+}
+
+@media only screen and (max-width: 768px) {
+  .search {
+    margin: 0 1rem;
+  }
+  .searchBar {
+    margin: 0;
+    width: 100%;
+  }
+
+  .searchBarButton {
+    width: 4rem;
+    aspect-ratio: 1/1;
+  }
+}
