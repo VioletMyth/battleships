@@ -1,0 +1,11 @@
+.hit {
+  width: 100%;
+}
+
+.gridSquare {
+  background: white;
+  width: 10%;
+  border: 1px solid rgb(152, 152, 152);
+  aspect-ratio: 1/1;
+  font-size: 0;
+}

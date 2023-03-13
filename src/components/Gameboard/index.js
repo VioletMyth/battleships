@@ -4,14 +4,14 @@ import carrierShape from "../../assets/carrierShape.png";
 import battleshipShape from "../../assets/battleshipShape.png";
 import cruiserShape from "../../assets/cruiserShape.png";
 import destroyerShape from "../../assets/destroyerShape.png";
-
 import submarineShape from "../../assets/submarineShape.png";
 import missSmall from "../../assets/missSmall.png";
-import miss from "../../assets/miss.png";
 import data from "../../data/response.json";
 import hitSmall from "../../assets/hitSmall.png";
-import hitBig from "../../assets/hitBig.png";
 import { GridSquareStatus } from "../../gridSquareStatus";
+import GridCell from "../GridCell";
+import GridRow from "../GridRow";
+import Grid from "../Grid";
 
 export default function Gameboard() {
   const initialiseGrid = (size) => {
@@ -78,18 +78,6 @@ export default function Gameboard() {
         );
       default:
         break;
-    }
-  };
-
-  const gridSquareRenderer = (gridSquareStatus) => {
-    console.log(gridSquareStatus);
-    switch (gridSquareStatus) {
-      case GridSquareStatus.Hit:
-        return <img src={hitBig} alt="hitBig" className={styles.hit} />;
-      case GridSquareStatus.Miss:
-        return <img src={miss} alt="miss" className={styles.hit} />;
-      default:
-        return;
     }
   };
 
@@ -179,20 +167,7 @@ export default function Gameboard() {
             })}
           </div>
         </div>
-        <div className={styles.grid}>
-          {grid.map((row, i) => (
-            <div className={styles.gridRow}>
-              {row.map((col, j) => (
-                <div
-                  className={styles.gridSquare}
-                  onClick={() => handleClick(i, j)}
-                >
-                  {gridSquareRenderer(grid[i][j])}
-                </div>
-              ))}
-            </div>
-          ))}
-        </div>
+        <Grid gridData={grid} onClickHandler={handleClick} />
       </div>
     </div>
   );
