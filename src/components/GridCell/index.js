@@ -8,7 +8,6 @@ export default function GridCell({ onClickHandler, row, col, grid }) {
   const { gridSquare, hit } = styles;
 
   const gridSquareRenderer = (gridSquareStatus) => {
-    console.log(gridSquareStatus);
     switch (gridSquareStatus) {
       case GridSquareStatus.Hit:
         return <img src={hitBig} alt="hitBig" className={hit} />;

@@ -2,88 +2,7 @@
   display: flex;
   justify-content: center;
   align-items: flex-start;
-}
-
-.left {
-  display: flex;
-  flex-direction: column;
-  width: 30%;
-  align-self: stretch;
-}
-
-.gridSquare {
-  background: white;
-  width: 10%;
-  border: 1px solid rgb(152, 152, 152);
-  aspect-ratio: 1/1;
-  font-size: 0;
-}
-
-.playerContainer {
-  display: flex;
-  width: 100%;
-  height: 30%;
-}
-
-.playerOne {
-  background: rgb(243, 179, 62);
-  color: rgb(74, 74, 74);
-  aspect-ratio: 1/1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-.playerTwo {
-  background: rgb(89, 180, 160);
-  color: rgb(74, 74, 74);
-  aspect-ratio: 1/1;
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-}
-
-.score {
-  border-bottom: 1px solid rgb(74, 74, 74);
-  padding: 20%;
-  font-size: clamp(1.5rem, 2vw + 1rem, 3rem);
-  font-weight: 700;
-  margin: 0 0.5rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.playerTag {
-  font-weight: bold;
-  font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
-  font-weight: 700;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
-.shipContainer {
-  display: flex;
-  align-items: center;
-  margin: 1rem 0;
-  gap: 1%;
-}
-
-.container {
   margin: 2rem 5%;
-}
-
-.shipImage {
-  width: 40%;
-}
-
-.imageContainer {
-  width: 100%;
-}
-
-.hitIndicator {
-  width: 5%;
 }
 
 .hit {
@@ -91,116 +10,18 @@
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .container {
-    margin: unset;
-  }
   .gameBoard {
     flex-direction: column-reverse;
     align-items: center;
     padding: 10px;
-  }
-
-  .grid {
-    width: 100%;
-    max-width: unset;
-  }
-
-  .left {
-    width: 100%;
-    flex-direction: unset;
-    margin-top: 1rem;
-  }
-
-  .playerContainer {
-    width: 35%;
-  }
-
-  .playerOne {
-    width: 50%;
-  }
-
-  .playerTwo {
-    width: 50%;
-  }
-
-  .playerTag {
-    height: unset;
-  }
-
-  .imageContainer {
-    margin-left: 10px;
-    width: 65%;
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-  }
-  .shipContainer {
-    width: 50%;
     margin: unset;
-    height: 33%;
-  }
-
-  .hitIndicator {
-    width: 10%;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .container {
-    margin: unset;
-  }
   .gameBoard {
     flex-direction: column-reverse;
     align-items: center;
-  }
-
-  .grid {
-    width: 100%;
-    max-width: unset;
-  }
-
-  .left {
-    width: 100%;
-  }
-
-  .playerContainer {
-    width: 100%;
-  }
-
-  .playerOne {
-    width: 50%;
-    aspect-ratio: unset;
-  }
-
-  .playerTwo {
-    width: 50%;
-    aspect-ratio: unset;
-  }
-
-  .score {
-    padding: 5%;
-    font-size: 3rem;
-    margin: 0 4rem;
-  }
-
-  .playerTag {
     margin: unset;
-    padding: 0.5rem;
-    font-size: 1.5rem;
-  }
-
-  .imageContainer {
-    display: flex;
-    flex-wrap: wrap;
-    flex-direction: column;
-    height: 250px;
-  }
-  .shipContainer {
-    width: 50%;
-    padding: 5px;
-  }
-
-  .hitIndicator {
-    width: 10%;
   }
 }

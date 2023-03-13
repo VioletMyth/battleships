@@ -1,0 +1,37 @@
+.shipContainer {
+  display: flex;
+  align-items: center;
+  margin: 1rem 0;
+  gap: 1%;
+}
+
+.shipImage {
+  width: 40%;
+}
+
+.hitIndicator {
+  width: 5%;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .shipContainer {
+    width: 50%;
+    margin: unset;
+    height: 33%;
+  }
+
+  .hitIndicator {
+    width: 10%;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .shipContainer {
+    width: 50%;
+    padding: 5px;
+  }
+
+  .hitIndicator {
+    width: 10%;
+  }
+}

@@ -1,23 +1,20 @@
-.grid {
-  width: 50%;
-  max-width: 700px;
-
-  background: rgb(243, 179, 62);
+.left {
   display: flex;
   flex-direction: column;
-  padding: 5px;
+  width: 30%;
+  align-self: stretch;
 }
 
 @media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
-  .grid {
+  .left {
     width: 100%;
-    max-width: unset;
+    flex-direction: unset;
+    margin-top: 1rem;
   }
 }
 
 @media only screen and (max-width: 768px) {
-  .grid {
+  .left {
     width: 100%;
-    max-width: unset;
   }
 }

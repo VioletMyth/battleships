@@ -1,0 +1,89 @@
+.playerContainer {
+  display: flex;
+  width: 100%;
+  height: 30%;
+}
+
+.playerOne {
+  background: rgb(243, 179, 62);
+  color: rgb(74, 74, 74);
+  aspect-ratio: 1/1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+.playerTwo {
+  background: rgb(89, 180, 160);
+  color: rgb(74, 74, 74);
+  aspect-ratio: 1/1;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.score {
+  border-bottom: 1px solid rgb(74, 74, 74);
+  padding: 20%;
+  font-size: clamp(1.5rem, 2vw + 1rem, 3rem);
+  font-weight: 700;
+  margin: 0 0.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.playerTag {
+  font-weight: bold;
+  font-size: clamp(1.2rem, 1vw + 1rem, 2rem);
+  font-weight: 700;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@media only screen and (min-device-width: 768px) and (max-device-width: 1024px) {
+  .playerContainer {
+    width: 35%;
+  }
+
+  .playerOne {
+    width: 50%;
+  }
+
+  .playerTwo {
+    width: 50%;
+  }
+
+  .playerTag {
+    height: unset;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .playerContainer {
+    width: 100%;
+  }
+
+  .playerOne {
+    width: 50%;
+    aspect-ratio: unset;
+  }
+
+  .playerTwo {
+    width: 50%;
+    aspect-ratio: unset;
+  }
+
+  .score {
+    padding: 5%;
+    font-size: 3rem;
+    margin: 0 4rem;
+  }
+
+  .playerTag {
+    margin: unset;
+    padding: 0.5rem;
+    font-size: 1.5rem;
+  }
+}
