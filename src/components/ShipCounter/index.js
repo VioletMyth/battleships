@@ -7,26 +7,26 @@ import destroyerShape from "../../assets/destroyerShape.png";
 import submarineShape from "../../assets/submarineShape.png";
 import missSmall from "../../assets/missSmall.png";
 import hitSmall from "../../assets/hitSmall.png";
-import { ShipType } from "../../shipType";
+import { ShipType } from "../../enums/shipType";
 
 export default function ShipCounter({ shipType, hitData }) {
   const { shipImage, shipContainer, hitIndicator } = styles;
 
   const shipRenderer = (type) => {
     switch (type) {
-      case ShipType.Destroyer:
+      case ShipType.DESTROYER:
         return (
           <img className={shipImage} src={destroyerShape} alt="destroyer" />
         );
-      case ShipType.Cruiser:
+      case ShipType.CRUISER:
         return <img className={shipImage} src={cruiserShape} alt="cruiser" />;
-      case ShipType.Carrier:
+      case ShipType.CARRIER:
         return <img className={shipImage} src={carrierShape} alt="carrier" />;
-      case ShipType.Submarine:
+      case ShipType.SUBMARINE:
         return (
           <img className={shipImage} src={submarineShape} alt="submarine" />
         );
-      case ShipType.Battleship:
+      case ShipType.BATTLESHIP:
         return (
           <img className={shipImage} src={battleshipShape} alt="battleship" />
         );
@@ -38,11 +38,11 @@ export default function ShipCounter({ shipType, hitData }) {
   return (
     <div className={shipContainer}>
       {shipRenderer(shipType)}
-      {hitData.map((isHit) =>
+      {hitData.map((isHit, i) =>
         isHit ? (
-          <img className={hitIndicator} src={hitSmall} alt="hit" />
+          <img className={hitIndicator} src={hitSmall} alt="hit" key={i} />
         ) : (
-          <img className={hitIndicator} src={missSmall} alt="miss" />
+          <img className={hitIndicator} src={missSmall} alt="miss" key={i} />
         )
       )}
     </div>

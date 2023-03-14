@@ -1,6 +1,6 @@
 import React from "react";
 import styles from "./GridCell.module.css";
-import { GridSquareStatus } from "../../gridSquareStatus";
+import { GridSquareStatus } from "../../enums/gridSquareStatus";
 import hitBig from "../../assets/hitBig.png";
 import miss from "../../assets/miss.png";
 import { useSelector, useDispatch } from "react-redux";
@@ -15,9 +15,9 @@ export default function GridCell({ row, col }) {
 
   const gridSquareRenderer = (gridSquareStatus) => {
     switch (gridSquareStatus) {
-      case GridSquareStatus.Hit:
+      case GridSquareStatus.HIT:
         return <img src={hitBig} alt="hitBig" className={hit} />;
-      case GridSquareStatus.Miss:
+      case GridSquareStatus.MISS:
         return <img src={miss} alt="miss" className={hit} />;
       default:
         return <div className={emptySquare}></div>;
@@ -30,13 +30,13 @@ export default function GridCell({ row, col }) {
         for (let [positionIndex, coordinates] of position.entries()) {
           if (coordinates[0] === row && coordinates[1] === col) {
             dispatch(updateShipsHit({ shipIndex, positionIndex }));
-            dispatch(updateGrid({ row, col, value: GridSquareStatus.Hit }));
+            dispatch(updateGrid({ row, col, value: GridSquareStatus.HIT }));
             return;
           }
         }
       }
     }
-    dispatch(updateGrid({ row, col, value: GridSquareStatus.Miss }));
+    dispatch(updateGrid({ row, col, value: GridSquareStatus.MISS }));
   };
 
   return (
