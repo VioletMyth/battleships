@@ -8,7 +8,7 @@ import { updateGrid } from "../../redux/gridSlice";
 import { updateShipsHit } from "../../redux/shipsSlice";
 
 export default function GridCell({ row, col }) {
-  const { gridSquare, hit } = styles;
+  const { gridSquare, hit, emptySquare } = styles;
   const dispatch = useDispatch();
   const grid = useSelector((state) => state.grid);
   const ships = useSelector((state) => state.ships);
@@ -20,7 +20,7 @@ export default function GridCell({ row, col }) {
       case GridSquareStatus.Miss:
         return <img src={miss} alt="miss" className={hit} />;
       default:
-        return;
+        return <div className={emptySquare}></div>;
     }
   };
 

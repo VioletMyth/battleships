@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./Gameboard.module.css";
 import Grid from "../Grid";
 import Score from "../Score";
