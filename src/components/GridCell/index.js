@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import styles from "./GridCell.module.css";
 import { GridSquareStatus } from "../../gridSquareStatus";
 import hitBig from "../../assets/hitBig.png";
@@ -25,11 +25,11 @@ export default function GridCell({ row, col }) {
   };
 
   const handleClick = (row, col) => {
-    for (let [i, ship] of ships.entries()) {
-      for (let [j, position] of ship.positions.entries()) {
-        for (let [pIndex, p] of position.entries()) {
-          if (p[0] === row && p[1] === col) {
-            dispatch(updateShipsHit({ i, pIndex }));
+    for (let [shipIndex, ship] of ships.entries()) {
+      for (let position of ship.positions) {
+        for (let [positionIndex, coordinates] of position.entries()) {
+          if (coordinates[0] === row && coordinates[1] === col) {
+            dispatch(updateShipsHit({ shipIndex, positionIndex }));
             dispatch(updateGrid({ row, col, value: GridSquareStatus.Hit }));
             return;
           }

@@ -20,8 +20,8 @@ const shipsSlice = createSlice({
   initialState: getShipInitialState(data),
   reducers: {
     updateShipsHit(state, action) {
-      const { i, pIndex } = action.payload;
-      state[i].hit[pIndex] = true;
+      const { shipIndex, positionIndex } = action.payload;
+      state[shipIndex].hit[positionIndex] = true;
     },
   },
 });

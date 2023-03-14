@@ -11,7 +11,6 @@ import { ShipType } from "../../shipType";
 
 export default function ShipCounter({ shipType, hitData }) {
   const { shipImage, shipContainer, hitIndicator } = styles;
-  console.log(shipType);
 
   const shipRenderer = (type) => {
     switch (type) {
