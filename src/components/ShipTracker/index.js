@@ -6,7 +6,7 @@ export default function ShipTracker({ shipData }) {
   const { imageContainer } = styles;
   return (
     <div className={imageContainer}>
-      {shipData.map(({ type, positions, hit }) => {
+      {shipData.map(({ type, hit }) => {
         return <ShipCounter hitData={hit} shipType={type} />;
       })}
     </div>
