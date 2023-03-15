@@ -5,6 +5,9 @@ const playerScoreSlice = createSlice({
   initialState: 0,
   reducers: {
     updatePlayerScore(state, payload) {
+      if (payload.payload === undefined) {
+        return state;
+      }
       return payload.payload;
     },
   },

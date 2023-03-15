@@ -21,6 +21,10 @@ const shipsSlice = createSlice({
   reducers: {
     updateShipsHit(state, action) {
       const { shipIndex, positionIndex } = action.payload;
+      if (shipIndex === undefined || positionIndex === undefined) {
+        return state;
+      }
+
       state[shipIndex].hit[positionIndex] = true;
     },
   },

@@ -3,7 +3,7 @@ import { GridSquareStatus } from "../enums/gridSquareStatus";
 
 const BATTLESHIP_SIZE = 10;
 
-const initialiseGrid = (size) => {
+export const initialiseGrid = (size) => {
   var grid = Array.apply(null, Array(size)).map(() => {
     return new Array(size).fill(GridSquareStatus.EMPTY);
   });
@@ -16,6 +16,9 @@ const gridSlice = createSlice({
   reducers: {
     updateGrid(state, action) {
       const { row, col, value } = action.payload;
+      if (row === undefined || col === undefined || value === undefined) {
+        return state;
+      }
       state[row][col] = value;
     },
   },
