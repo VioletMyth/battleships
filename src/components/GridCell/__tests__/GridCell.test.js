@@ -63,7 +63,6 @@ describe("GridCell", () => {
     );
     const subject = screen.getAllByText("");
     fireEvent.click(subject[2]);
-    console.log(store.getActions());
     expect(store.getActions()).toContainEqual(
       updateShipsHit({ shipIndex: 0, positionIndex: 0 }),
       updateGrid({ row: 0, col: 0, value: GridSquareStatus.HIT })
@@ -91,7 +90,6 @@ describe("GridCell", () => {
     );
     const subject = screen.getAllByText("");
     fireEvent.click(subject[2]);
-    console.log(store.getActions());
     expect(store.getActions()).toContainEqual(
       updateGrid({ row: 0, col: 1, value: GridSquareStatus.MISS })
     );
